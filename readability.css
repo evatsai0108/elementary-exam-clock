@@ -1,0 +1,252 @@
+/* Keep classroom information readable from a distance, including 720p projection. */
+:root { --muted: #4d665b; }
+body { line-height: 1.45; }
+.shell { max-width: 1680px; padding: 24px 28px 18px; }
+.header { margin-bottom: 20px; }
+.brand h1 { font-size: 30px; }
+.brand p { font-size: 17px; color: #4d665b; }
+.live-clock > span { font-size: 17px; color: #4d665b; }
+.live-clock strong { font-size: 32px; }
+.live-clock small { font-size: 15px; color: #4d665b; }
+.icon-button { font-size: 18px; }
+.classroom-bar { gap: 20px; padding: 12px 18px; margin-bottom: 18px; }
+.classroom-label { font-size: 19px; padding-right: 16px; }
+.field label { font-size: 18px; color: #405c50; }
+.field select, .field input { font-size: 20px; min-height: 46px; font-weight: 600; }
+.field input[type=date] { width: 180px; max-width: 190px; }
+.field #customClass { width: 150px; }
+.auto-pill { font-size: 16px; }
+.main-grid { grid-template-columns: minmax(0, 1fr) minmax(340px, 30%); gap: 20px; }
+.timer-card { padding: 22px 28px 16px; }
+.phase-pill { font-size: 20px; padding: 7px 12px; }
+.room-name { font-size: 24px; font-weight: 700; color: #385a4d; }
+.subject-area { margin: 13px 0 8px; }
+.eyebrow { font-size: 20px; color: #4c6559; margin-bottom: 5px; }
+.subject-control select { font-size: 56px; min-height: 74px; line-height: 1.2; }
+.subject-control input { font-size: 30px; max-width: min(100%, 340px); }
+.subject-area h2 { font-size: 48px; line-height: 1.3; }
+.countdown-caption { font-size: 22px; color: #466457; }
+.countdown { font-size: clamp(160px, 15vw, 240px); line-height: 1.05; margin: 4px 0; }
+.timer-subline { font-size: 20px; color: #4a6556; margin: 6px 0 18px; }
+.progress-wrap { margin: 0 4px 14px; }
+.progress-label { font-size: 18px; color: #466050; margin-bottom: 7px; }
+.progress-track { height: 12px; }
+.timer-bottom { padding-top: 12px; flex-wrap: wrap; gap: 8px 15px; }
+.sound-button { font-size: 17px; color: #415f50; padding: 7px 0; }
+.sound-button[aria-pressed=false] svg { opacity: .8; }
+.adjustments { font-size: 16px; color: #476050; flex-wrap: wrap; }
+.adjustments button { font-size: 17px; padding: 7px 10px; min-height: 38px; }
+.schedule-card { padding: 24px 20px 20px; }
+.schedule-heading { margin-bottom: 17px; }
+.schedule-heading h2 { font-size: 29px; }
+.schedule-heading .eyebrow { font-size: 16px; color: #4c6559; }
+.schedule-count { font-size: 15px; color: #476050; }
+.schedule-list { gap: 7px; }
+.schedule-row { gap: 11px; padding: 12px 9px; }
+.schedule-row .number { width: 35px; height: 35px; font-size: 19px; color: #42634c; }
+.schedule-row h3 { font-size: 23px; line-height: 1.35; margin-bottom: 5px; letter-spacing: 0; }
+.schedule-row .time { font-size: 19px; line-height: 1.4; color: #45604e; white-space: nowrap; }
+.row-state { font-size: 15px; color: #476050; }
+.schedule-row.completed { opacity: 1; }
+.schedule-row.completed .number { background: #e4e9dc; color: #4d6650; }
+.schedule-row.break { padding: 5px 9px 5px 24px; gap: 19px; min-height: 0; }
+.break .number { width: 3px; height: 24px; }
+.break .row-main { flex-direction: column; align-items: flex-start; gap: 2px; }
+.break h3 { font-size: 19px; color: #50654b; margin: 0; }
+.break .time { font-size: 18px; }
+.schedule-note { display: none; }
+.reminder { margin-top: 18px; padding: 14px 20px; }
+.reminder strong { font-size: 19px; color: #71551f; }
+.reminder p { font-size: 22px; color: #72591f; margin-top: 3px; }
+.footer { font-size: 14px; color: #50634b; margin-top: 15px; }
+.preview-banner { font-size: 18px; }
+.timer-card[data-phase=done] .countdown { color: #426b4b; font-size: clamp(150px, 14vw, 220px); }
+.timer-card[data-phase=break] .countdown { color: #8b611b; }
+.timer-card[data-warning=true] .countdown { color: #965f12; }
+.card-stamp { width: 57px; top: 85px; right: 20px; opacity: .55; }
+
+/* The teacher's controls use readable text and generous tap targets too. */
+dialog { width: min(880px, calc(100% - 28px)); }
+.dialog-heading h2 { font-size: 30px; }
+.dialog-heading .eyebrow, .dialog-intro { font-size: 18px; }
+.dialog-intro { color: #4d6659; }
+.exam-editor { grid-template-columns: 72px minmax(0, 1fr) minmax(0, 1.25fr); gap: 12px; }
+.exam-editor strong { font-size: 18px; }
+.editor-subject select, .editor-subject input, .editor-times input { font-size: 19px; min-height: 46px; }
+.editor-times span { font-size: 18px; color: #4d6659; }
+.settings-options, .text-button, .block-label { font-size: 18px; }
+.settings-options { gap: 16px; }
+.settings-options label { gap: 9px; }
+textarea { font-size: 19px; }
+.extra-settings { font-size: 17px; color: #4b6354; }
+.extra-settings small { font-size: 16px; }
+.preview-buttons button, .backup-buttons button, .file-button { font-size: 17px; min-height: 43px; }
+.dialog-footer button { font-size: 19px; min-height: 46px; }
+.offline-link, .form-error, .toast { font-size: 17px; }
+
+@media (max-width: 1390px) {
+  .auto-pill { display: none; }
+  .schedule-count { display: none; }
+  .schedule-row h3 { font-size: 22px; }
+  .row-state { font-size: 14px; }
+}
+@media (max-width: 1130px) {
+  .shell { padding: 22px; }
+  .header { flex-wrap: wrap; gap: 15px; }
+  .brand h1 { font-size: 27px; }
+  .classroom-bar { flex-wrap: wrap; gap: 12px 18px; }
+  .classroom-label { border: 0; padding-right: 0; }
+  .main-grid { grid-template-columns: minmax(0, 1fr) 325px; }
+  .timer-card { padding: 22px; }
+  .subject-control select { font-size: 48px; }
+  .countdown { font-size: clamp(132px, 14vw, 170px); }
+  .adjustments > span { display: none; }
+  .live-clock small { display: none; }
+}
+
+/* Reduce secondary details on short projectors; keep essential text large. */
+@media (min-width: 900px) and (max-height: 820px) {
+  .shell { padding: 16px 24px 12px; }
+  .header { margin-bottom: 12px; gap: 12px; flex-wrap: nowrap; }
+  .brand h1 { font-size: 26px; margin: 0; }
+  .brand p, .live-clock small { display: none; }
+  .brand img { width: 42px; height: 42px; }
+  .live-clock > span { font-size: 16px; }
+  .live-clock strong { font-size: 29px; }
+  .icon-button { font-size: 17px; padding: 10px; }
+  .classroom-bar { margin-bottom: 12px; padding: 8px 14px; gap: 15px; }
+  .classroom-label { font-size: 18px; padding-right: 12px; }
+  .field { gap: 7px; }
+  .field select, .field input { font-size: 19px; min-height: 42px; padding: 7px 9px; }
+  .timer-card { padding: 14px 22px 12px; }
+  .phase-pill { font-size: 18px; padding: 5px 10px; }
+  .room-name { font-size: 23px; }
+  .subject-area { margin: 5px 0 3px; }
+  .subject-area .eyebrow { font-size: 18px; margin-bottom: 2px; }
+  .subject-control select { font-size: 44px; min-height: 56px; }
+  .subject-area h2 { font-size: 40px; line-height: 1.4; }
+  .countdown-caption { font-size: 19px; }
+  .countdown { font-size: clamp(140px, 11.5vw, 166px); line-height: 1; margin: 2px 0 6px; }
+  .timer-subline { display: none; }
+  .progress-wrap { margin: 5px 0 10px; }
+  .progress-label { font-size: 17px; margin-bottom: 5px; }
+  .progress-track { height: 10px; }
+  .timer-bottom { padding-top: 8px; min-height: 42px; gap: 7px; }
+  .sound-button { font-size: 16px; padding: 6px 0; }
+  .adjustments { gap: 5px; }
+  .adjustments > span { display: none; }
+  .adjustments button { font-size: 16px; min-height: 36px; padding: 5px 8px; }
+  .schedule-card { padding: 16px 16px 12px; }
+  .schedule-heading { margin-bottom: 9px; }
+  .schedule-heading h2 { font-size: 27px; }
+  .schedule-heading .eyebrow { display: none; }
+  .schedule-list { gap: 5px; }
+  .schedule-row:not(.break) { padding: 7px; }
+  .schedule-row h3 { font-size: 22px; margin-bottom: 3px; }
+  .schedule-row .time { font-size: 18px; }
+  .schedule-row.break { padding: 3px 7px 3px 24px; min-height: 0; }
+  .break h3 { font-size: 18px; margin-bottom: 0; }
+  .break .time { font-size: 18px; }
+  .reminder { margin-top: 12px; padding: 10px 16px; gap: 12px; }
+  .reminder > div:nth-child(2) { display: flex; align-items: baseline; gap: 16px; }
+  .reminder strong { font-size: 18px; white-space: nowrap; }
+  .reminder p { font-size: 20px; margin: 0; }
+  .reminder-flower { display: none; }
+  .footer { display: none; }
+  .preview-banner { font-size: 16px; padding: 5px 12px; margin-bottom: 10px; }
+  .timer-card[data-phase=done] .countdown { font-size: 140px; }
+  .card-stamp { width: 45px; top: 68px; right: 15px; }
+}
+
+@media (max-width: 899px) {
+  .main-grid { grid-template-columns: 1fr; }
+  .header-actions { margin-left: auto; }
+  .live-clock { display: grid; }
+  .schedule-card { padding: 24px; }
+  .schedule-row h3 { font-size: 24px; }
+  .schedule-row .time { font-size: 20px; }
+  .row-state { font-size: 17px; }
+  .schedule-heading .eyebrow { font-size: 17px; }
+  .countdown { font-size: clamp(132px, 24vw, 210px); }
+}
+@media (max-width: 620px) {
+  .shell { padding: 18px 14px; }
+  .brand h1 { font-size: 26px; }
+  .brand p { font-size: 16px; }
+  .header-actions { width: 100%; gap: 6px; }
+  .live-clock strong { font-size: 25px; }
+  .live-clock > span { font-size: 15px; }
+  .icon-button { font-size: 16px; padding: 9px; gap: 5px; }
+  .icon-button svg { width: 18px; }
+  .classroom-bar { padding: 13px; gap: 12px; }
+  .classroom-label { width: 100%; font-size: 18px; }
+  .field label { font-size: 17px; }
+  .field select, .field input { font-size: 18px; min-height: 44px; padding: 8px; }
+  .field input[type=date] { width: 174px; }
+  .date-field { margin-left: 0; }
+  .timer-card { padding: 20px 16px 16px; }
+  .phase-pill { font-size: 16px; padding: 6px 8px; }
+  .room-name { font-size: 20px; letter-spacing: 0; }
+  .subject-area { margin: 18px 0 10px; }
+  .subject-area .eyebrow { font-size: 17px; }
+  .subject-control select { font-size: 44px; min-height: 62px; }
+  .subject-control input { font-size: 24px; width: 100%; }
+  .subject-area h2 { font-size: 36px; }
+  .countdown-caption { font-size: 19px; }
+  .countdown { font-size: clamp(82px, 25vw, 150px); }
+  .timer-subline { font-size: 17px; margin: 8px 0 22px; }
+  .progress-label { font-size: 16px; }
+  .timer-bottom { flex-wrap: wrap; }
+  .sound-button, .adjustments button { font-size: 16px; }
+  .card-stamp { width: 43px; top: 88px; right: 10px; opacity: .35; }
+  .schedule-card { padding: 22px 18px; }
+  .schedule-heading h2 { font-size: 27px; }
+  .schedule-row { padding: 12px 8px; gap: 9px; }
+  .schedule-row h3 { font-size: 22px; }
+  .schedule-row .time, .break h3 { font-size: 18px; }
+  .row-state { font-size: 15px; }
+  .reminder { padding: 16px; gap: 12px; }
+  .reminder strong { font-size: 18px; }
+  .reminder p { font-size: 20px; }
+  .footer { flex-wrap: wrap; font-size: 14px; }
+  .preview-banner { font-size: 16px; flex-wrap: wrap; gap: 6px; }
+  .timer-card[data-phase=done] .countdown { font-size: clamp(82px, 25vw, 150px); }
+  dialog { padding: 20px 16px; }
+  .exam-editor { grid-template-columns: 63px minmax(0, 1fr); padding: 12px; }
+  .exam-editor strong { font-size: 17px; }
+  .editor-times { grid-column: 1 / -1; }
+  .editor-times input { font-size: 17px; padding: 8px 5px; }
+  .editor-subject select, .editor-subject input { font-size: 18px; }
+  .settings-options { font-size: 17px; }
+  .dialog-footer { bottom: -20px; }
+}
+@media (max-width: 365px) {
+  .header-actions { flex-wrap: wrap; }
+  .live-clock { width: 100%; }
+  .row-state { display: none; }
+  .editor-times { flex-direction: column; }
+  .editor-times input { max-width: none; width: 100%; }
+  .editor-times span { display: none; }
+}
+
+/* Fullscreen dedicates the projection area to the exam and today's schedule. */
+@media (min-width: 900px) {
+  :fullscreen .shell { height: 100dvh; max-width: none; display: flex; flex-direction: column; padding: 18px 24px; }
+  :fullscreen .classroom-bar, :fullscreen .footer, :fullscreen .brand p, :fullscreen .timer-subline { display: none; }
+  :fullscreen .header { margin-bottom: 12px; flex-shrink: 0; }
+  :fullscreen .main-grid { flex: 1; min-height: 0; }
+  :fullscreen .timer-card { display: flex; flex-direction: column; padding: 18px 28px 14px; }
+  :fullscreen .phase-pill { font-size: 22px; }
+  :fullscreen .room-name { font-size: 28px; }
+  :fullscreen .subject-area { margin: 10px 0 4px; }
+  :fullscreen .subject-control select { font-size: clamp(44px, 5.5vh, 66px); min-height: 1.3em; }
+  :fullscreen .countdown { flex: 1; min-height: 0; align-items: center; font-size: clamp(140px, 28vh, 330px); line-height: 1; margin: 0; }
+  :fullscreen .countdown .colon { margin-bottom: 0; }
+  :fullscreen .countdown-caption { font-size: 24px; }
+  :fullscreen .reminder { flex-shrink: 0; margin-top: 12px; }
+  :fullscreen .schedule-heading h2 { font-size: 30px; }
+  :fullscreen .schedule-row h3 { font-size: 24px; }
+  :fullscreen .schedule-row .time { font-size: 21px; }
+  :fullscreen .break h3 { font-size: 21px; }
+  :fullscreen .timer-card[data-phase=done] .countdown { font-size: clamp(140px, 28vh, 330px); }
+}

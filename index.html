@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#167a70">
+  <meta name="description" content="國小通用考試倒數時鐘，自訂年級、班級與科目，依臺灣時間自動切換考試及下課。">
+  <title>國小考試倒數｜一起專心，好好作答</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="readability.css">
+  <script src="clock.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <header class="header">
+      <div class="brand"><img src="favicon.svg" width="48" height="48" alt=""><div><h1>國小考試倒數</h1><p>一起專心，好好作答。</p></div></div>
+      <div class="header-actions">
+        <div class="live-clock"><span id="todayLabel"></span><strong id="wallClock">--:--:--</strong><small>臺灣時間</small></div>
+        <button class="icon-button" id="fullscreen" title="全螢幕投影" aria-label="全螢幕投影"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg><span>全螢幕</span></button>
+        <button class="icon-button" id="openSettings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 17h16M8 4v6m8 4v6"/></svg><span>考程設定</span></button>
+      </div>
+    </header>
+
+    <section class="classroom-bar" aria-label="考場選擇">
+      <div class="classroom-label"><span class="small-book" aria-hidden="true">▤</span><strong>今天的考場</strong></div>
+      <div class="field"><label for="grade">年級</label><select id="grade"><option value="1">一年級</option><option value="2">二年級</option><option value="3" selected>三年級</option><option value="4">四年級</option><option value="5">五年級</option><option value="6">六年級</option></select></div>
+      <div class="field"><label for="classroom">班級</label><select id="classroom"></select><input id="customClass" aria-label="自訂班級" placeholder="輸入班級" maxlength="12" hidden></div>
+      <div class="field date-field"><label for="examDate">考試日期</label><input type="date" id="examDate" required></div>
+      <span class="auto-pill"><span></span> 依鐘點自動切換</span>
+    </section>
+
+    <div id="previewBanner" class="preview-banner" hidden><span>畫面預覽中，鐘聲暫停</span><button id="exitPreview">回到目前時間 ↗</button></div>
+
+    <main class="main-grid">
+      <section class="timer-card" id="timerCard" aria-label="倒數計時">
+        <div class="timer-topline"><span class="phase-pill" id="phasePill">準備開始</span><span class="room-name" id="roomName">三年一班</span></div>
+        <div class="subject-area"><p class="eyebrow" id="sessionLabel">第一節 · 08:30 — 09:10</p><div class="subject-control"><label class="sr-only" for="subject">考試科目</label><select id="subject" title="選擇本節科目"></select><input id="customSubject" aria-label="自訂科目" placeholder="輸入科目" maxlength="30" hidden></div><h2 id="breakTitle" hidden>下課休息</h2></div>
+        <p class="countdown-caption" id="countdownCaption">距離考試開始還有</p>
+        <div class="countdown" id="countdown" role="timer" aria-label="剩餘時間"><span id="minutes">00</span><span class="colon">:</span><span id="seconds">00</span></div>
+        <p class="timer-subline" id="timerSubline">準備好文具，讓自己慢慢靜下來。</p>
+        <div class="progress-wrap"><div class="progress-label"><span id="progressLabel">準備時間</span><span id="endLabel">08:30 開始</span></div><div class="progress-track" role="progressbar" aria-label="剩餘時間比例" aria-valuemin="0" aria-valuemax="100" id="progressTrack"><div id="progressFill"></div></div></div>
+        <div class="timer-bottom"><button id="soundToggle" class="sound-button" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m11 5-6 4H2v6h3l6 4V5Zm5 4a5 5 0 0 1 0 6m3-9a9 9 0 0 1 0 12"/></svg><span>開啟提醒鐘聲</span></button><div class="adjustments" id="adjustments" hidden><span>臨時加時</span><button id="addMinute">＋1 分</button><button id="addFive">＋5 分</button><button id="clearExtra" hidden>取消</button></div></div>
+        <div class="card-stamp" aria-hidden="true"><svg viewBox="0 0 90 90"><path d="m17 62 6-22 29-29 18 18-29 29-24 4Z" fill="#f9dfa0"/><path d="m23 40 18 18m11-47 18 18M17 62l11-3-8-8" fill="none" stroke="#c49643" stroke-width="3" stroke-linecap="round"/><path d="m52 11 4-4a5 5 0 0 1 7 0l11 11a5 5 0 0 1 0 7l-4 4" fill="#efb7a0"/><path d="M14 76h58" stroke="#c9d6c8" stroke-width="3" stroke-linecap="round"/></svg></div>
+      </section>
+
+      <aside class="schedule-card" aria-label="今日考程">
+        <div class="schedule-heading"><div><p class="eyebrow">一步一步，完成今天</p><h2>今日考程</h2></div><span class="schedule-count">3 節考試</span></div>
+        <div id="scheduleList" class="schedule-list"></div>
+        <div class="schedule-note"><svg viewBox="0 0 64 48" aria-hidden="true"><path d="M10 40V9l20 4 4-1 20-3v31l-20 4-4-1-20-3Z" fill="#e2eee5" stroke="#8bad99" stroke-width="2"/><path d="M32 14v28M16 17l10 2m-10 6 10 2m12-8 10-2m-10 10 10-2" stroke="#8bad99" stroke-width="2" stroke-linecap="round"/></svg><p>看清題目，照自己的步調。<br><strong>每一份努力，都很棒。</strong></p></div>
+      </aside>
+    </main>
+
+    <section class="reminder"><div class="reminder-icon" aria-hidden="true">✓</div><div><strong id="reminderTitle">作答小提醒</strong><p id="reminderText">先寫班級、姓名、座號；完成後，記得再檢查一次。</p></div><span class="reminder-flower" aria-hidden="true">✳</span></section>
+    <footer class="footer"><span>給每一個努力的你 <span aria-hidden="true">✦</span></span><span id="saveStatus">設定儲存在這台瀏覽器</span></footer>
+  </div>
+
+  <dialog id="settingsDialog" aria-labelledby="settingsTitle">
+    <form id="settingsForm">
+      <div class="dialog-heading"><div><p class="eyebrow">老師的準備區</p><h2 id="settingsTitle">考程設定</h2></div><button type="button" id="closeSettings" class="close-button" aria-label="關閉設定">×</button></div>
+      <p class="dialog-intro">選擇各節科目與鐘點，空檔會自動成為下課時間。</p>
+      <div id="examEditors" class="exam-editors"></div>
+      <div class="settings-options"><label><input id="fiveMinuteWarning" type="checkbox" checked> 最後 5 分鐘提醒</label><label><input id="endBell" type="checkbox" checked> 考試及下課結束鐘聲</label><button type="button" id="testSound" class="text-button">♫ 試聽鐘聲</button></div>
+      <label class="block-label" for="hintText">作答提醒文字</label><textarea id="hintText" rows="2" maxlength="160"></textarea>
+      <p id="formError" class="form-error" role="alert"></p>
+      <details class="extra-settings"><summary>預覽與設定備份</summary><p>預覽只改變顯示，不會發出鐘聲；離開預覽即可回到目前時間。</p><div class="preview-buttons"><button type="button" data-preview="08:20">考前</button><button type="button" data-preview="08:50">考試中</button><button type="button" data-preview="09:06">最後 5 分</button><button type="button" data-preview="09:15">下課</button><button type="button" data-preview="11:00">結束</button></div><div class="backup-buttons"><button type="button" id="exportConfig">匯出設定</button><label class="file-button">匯入設定<input id="importConfig" type="file" accept=".json,application/json"></label><button type="button" id="restoreDefaults">還原預設考程</button></div><small>備份包含年級、班級、科目、考程及提醒設定；不包含臨時加時。</small></details>
+      <p class="offline-link"><a href="offline-exam-clock.zip" download>↓ 下載離線版，帶到教室使用</a></p>
+      <div class="dialog-footer"><button type="button" id="cancelSettings">取消</button><button type="submit" class="primary-button">儲存並套用</button></div>
+    </form>
+  </dialog>
+  <div id="toast" role="status" class="toast" hidden></div>
+</body>
+</html>
